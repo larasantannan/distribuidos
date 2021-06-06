@@ -20,13 +20,16 @@ def getNTP():
     response = c.request('time.google.com', version=3)
     return parser.parse(ctime(response.tx_time))
 
+CURRENT_TIME = getNTP()
 
 # client thread function used to send time at client side
 def startSendingTime(listening_client):
 
+    print("OIOIOIOI", CURRENT_TIME, listening_client)
+
     while True:
         # provide server with clock time at the client
-        listening_client.send(str(getNTP()).encode())
+        listening_client.send(str(CURRENT_TIME).encode())
 
         print("Recent time sent successfully", end = "\n\n")
 
@@ -41,7 +44,6 @@ def startReceivingTime(listening_client):
         Synchronized_time = parser.parse(listening_client.recv(1024).decode())
 
         print("HELP", listening_client.getpeername())
-
 
         print("Synchronized time at the process 1 is: " + str(Synchronized_time), end = "\n\n")
 
