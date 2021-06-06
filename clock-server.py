@@ -30,7 +30,7 @@ def startSendingTime(listening_client):
 
         print("Recent time sent successfully", end = "\n\n")
 
-        time.sleep(0.001)
+        time.sleep(5)
 
 
 # client thread function used to receive synchronized time
@@ -66,7 +66,7 @@ def startRecieveingClockTime(connector, address):
         }
 
         print("Client Data updated with: "+ str(address), end = "\n\n")
-        time.sleep(0.001)
+        time.sleep(5)
 
 
 ''' master thread function used to open portal for
@@ -131,7 +131,7 @@ def synchronizeAllClocks():
         
         print("\n\n")
 
-        time.sleep(0.001)
+        time.sleep(5)
 
 # function used to Synchronize client process time
 def connectToProccess(port):
